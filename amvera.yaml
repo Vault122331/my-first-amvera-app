@@ -1,25 +1,28 @@
-        version: 1.0
-        services:
-          backend:
-            type: docker
-            dockerfile: Dockerfile
+    version: 1.0
+    meta:
+      name: vault-final-test
+      description: My first FastAPI app on Amvera
+    services:
+      backend:
+        type: docker
+        dockerfile: Dockerfile
+        port: 8000
+        image: amvera-test-app
+        environment:
+          APP_NAME: "Amvera Test App"
+        resources:
+          cpu: 500m
+          memory: 512Mi
+        liveness_probe:
+          http_get:
+            path: /health
             port: 8000
-            image: amvera-test-app
-            environment:
-              APP_NAME: "Amvera Test App"
-            resources:
-              cpu: 500m
-              memory: 512Mi
-            liveness_probe:
-              http_get:
-                path: /health
-                port: 8000
-              initial_delay_seconds: 10
-              period_seconds: 30
-            readiness_probe:
-              http_get:
-                path: /health
-                port: 8000
-              initial_delay_seconds: 5
-              period_seconds: 10
-        
+          initial_delay_seconds: 10
+          period_seconds: 30
+        readiness_probe:
+          http_get:
+            path: /health
+            port: 8000
+          initial_delay_seconds: 5
+          period_seconds: 10
+    
