@@ -3,7 +3,8 @@
       name: vault-final-test
       description: My first FastAPI app on Amvera
       toolchain:
-        type: docker # Указываем, что сборка будет через Dockerfile
+        type: docker
+        name: docker # Это стандартное имя для Docker toolchain в Amvera
     services:
       backend:
         type: docker
@@ -28,4 +29,3 @@
           initial_delay_seconds: 5
           period_seconds: 10
     
-
