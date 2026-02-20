@@ -2,9 +2,10 @@
     meta:
       name: vault-final-test
       description: My first FastAPI app on Amvera
+      environment: python # Указываем среду выполнения
       toolchain:
         type: docker
-        name: docker # Это стандартное имя для Docker toolchain в Amvera
+        name: docker
     services:
       backend:
         type: docker
@@ -27,5 +28,5 @@
             path: /health
             port: 8000
           initial_delay_seconds: 5
-          period_seconds: 10
+            period_seconds: 10
     
